@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <section>Total weight: <span id="result-display">0</span></section>
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>weight (lbs)</th>
+              <th>drop</th>
+              <th>add</th>
+              <th>in use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2.76</td>
+              <td>
+                <button
+                  id="drop__2.76"
+                  disabled="true"
+                  onclick="onClick(event)"
+                >
+                  -
+                </button>
+              </td>
+              <td>
+                <button id="add__2.76" onclick="onClick(event)">+</button>
+              </td>
+              <td>(<span id="counter__2.76">0</span>)</td>
+            </tr>
+            <tr>
+              <td>3.3</td>
+              <td>
+                <button id="drop__3.3" disabled="true" onclick="onClick(event)">
+                  -
+                </button>
+              </td>
+              <td><button id="add__3.3" onclick="onClick(event)">+</button></td>
+              <td>(<span id="counter__3.3">0</span>)</td>
+            </tr>
+            <tr>
+              <td>4.4</td>
+              <td>
+                <button id="drop__4.4" disabled="true" onclick="onClick(event)">
+                  -
+                </button>
+              </td>
+              <td><button id="add__4.4" onclick="onClick(event)">+</button></td>
+              <td>(<span id="counter__4.4">0</span>)</td>
+            </tr>
+            <tr>
+              <td>5.5</td>
+              <td>
+                <button id="drop__5.5" disabled="true" onclick="onClick(event)">
+                  -
+                </button>
+              </td>
+              <td><button id="add__5.5" onclick="onClick(event)">+</button></td>
+              <td>(<span id="counter__5.5">0</span>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <script>
+      const counters = { 2.76: 0, 3.3: 0, 4.4: 0, 5.5: 0 };
+
+      function updateTotal() {
+        const total = Object.entries(counters).reduce(
+          (acc, [k, v]) => acc + +k * v,
+          0
+        );
+        document.getElementById("result-display").innerText = total;
+      }
+
+      function onClick(e) {
+        const { target } = e;
+        const [type, amount] = target.id.split("__");
+        console.log({ target, type, amount });
+
+        if (type === "add") {
+          counters[amount] += 1;
+          document.getElementById(`drop__${amount}`).disabled = false;
+          if (counters[amount] === 4) {
+            target.disabled = true;
+          }
+        } else {
+          counters[amount] -= 1;
+          document.getElementById(`add__${amount}`).disabled = false;
+          if (counters[amount] === 0) {
+            target.disabled = true;
+          }
+        }
+
+        document.getElementById(`counter__${amount}`).innerText =
+          counters[amount];
+        updateTotal();
+      }
+    </script>
+  </body>
+</html>
