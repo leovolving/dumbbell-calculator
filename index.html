@@ -6,8 +6,40 @@
     <title>Document</title>
   </head>
   <body>
+    <style>
+      section {
+        margin: 32px;
+      }
+      strong {
+        font-size: 24px;
+      }
+      button {
+        height: 24px;
+        width: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      table {
+        margin-top: 40px;
+      }
+      td,
+      th {
+        padding: 16px;
+        text-align: center;
+      }
+      td {
+        border-top: 1px solid lightgray;
+      }
+      td:not(:last-child),
+      th:not(:last-child) {
+        border-right: 1px solid lightgray;
+      }
+    </style>
     <main>
-      <section>Total weight: <span id="result-display">0</span></section>
+      <section>
+        <strong>Total weight: <span id="result-display">0</span></strong>
+      </section>
       <section>
         <table>
           <thead>
@@ -33,7 +65,7 @@
               <td>
                 <button id="add__2.76" onclick="onClick(event)">+</button>
               </td>
-              <td>(<span id="counter__2.76">0</span>)</td>
+              <td><span id="counter__2.76">0</span></td>
             </tr>
             <tr>
               <td>3.3</td>
@@ -43,7 +75,7 @@
                 </button>
               </td>
               <td><button id="add__3.3" onclick="onClick(event)">+</button></td>
-              <td>(<span id="counter__3.3">0</span>)</td>
+              <td><span id="counter__3.3">0</span></td>
             </tr>
             <tr>
               <td>4.4</td>
@@ -53,7 +85,7 @@
                 </button>
               </td>
               <td><button id="add__4.4" onclick="onClick(event)">+</button></td>
-              <td>(<span id="counter__4.4">0</span>)</td>
+              <td><span id="counter__4.4">0</span></td>
             </tr>
             <tr>
               <td>5.5</td>
@@ -63,7 +95,7 @@
                 </button>
               </td>
               <td><button id="add__5.5" onclick="onClick(event)">+</button></td>
-              <td>(<span id="counter__5.5">0</span>)</td>
+              <td><span id="counter__5.5">0</span></td>
             </tr>
           </tbody>
         </table>
